@@ -3,17 +3,17 @@
 Public download point for prebuilt `dotping` binaries. This repo holds **binaries and checksums only**: no source, no tokens, no credentials.
 Source lives in the private `vizidrix/viz` repo under `tools/dotping`.
 
-## Current release: tag `dotping-68eb8686`, contents from main `981647dc`
+## Current release: tag `dotping-68eb8686`, contents from main `48b3a765`
 
-The tag keeps its old name because the ping text inside dotping links to it. Its assets were replaced on 2026-10-09 at 02:40 PT with the exact binaries deployed from `vizidrix/viz` main at `981647dc7b3a6a32fa0c238bf4ec236dd6f8221b` (#5921, #5925, #5928), built with Zig 0.16.0 and `-Doptimize=ReleaseSafe`.
+The tag keeps its old name because the ping text inside dotping links to it. Its assets were replaced on 2026-10-09 at 03:55 PT with the exact binaries deployed from `vizidrix/viz` main at `48b3a76529672f9046fa22eef9970b398f1db5da` (#5945, with #5930, #5934, #5939, #5932, #5940), built with Zig 0.16.0 and `-Doptimize=ReleaseSafe`.
 
 | Asset | Platform | sha256 |
 |---|---|---|
-| `dotping-linux-x86_64` (**recommended**, same bytes as `-baseline`) | Linux x86_64, any CPU (static, baseline CPU) | `0f0fc1967889eec5fe3136e7b0c282988184d7e188bd6b9278c874e2ba97e262` |
-| `dotping-linux-x86_64-baseline` | Linux x86_64, any CPU | `0f0fc1967889eec5fe3136e7b0c282988184d7e188bd6b9278c874e2ba97e262` |
-| `dotping-macos-arm64` | macOS Apple Silicon (ad-hoc signed) | `9ce0dd4b48fc52b572b9042b39dedebac554a7dbfa391b77346c551c1330b739` |
+| `dotping-linux-x86_64` (**recommended**, same bytes as `-baseline`) | Linux x86_64, any CPU (static, baseline CPU) | `1b640148fb741b4690c7a5f3a1d97d9c78883271d387ab6aeef858ac807e8c44` |
+| `dotping-linux-x86_64-baseline` | Linux x86_64, any CPU | `1b640148fb741b4690c7a5f3a1d97d9c78883271d387ab6aeef858ac807e8c44` |
+| `dotping-macos-arm64` | macOS Apple Silicon (ad-hoc signed) | `7a0a837bddb2243ea45b7748b20e5514b1a80b8a1a6ec7fcdba3612d7f50de4a` |
 
-Each binary also has its own `<asset>.sha256` file. The old AVX-512 `dotping-linux-x86_64-native` asset was removed. If you downloaded before 02:40 PT Oct 9, download again: the new build fixes `status` dying with `registry.json: no apps`.
+Each binary also has its own `<asset>.sha256` file. New in this build: `dotping <slug> gh` (GitHub token issuance). It stays inert until an issuer is pinned: until then it exits 75 and prints no token.
 
 ## Anonymous download (no GitHub sign-in needed)
 

@@ -3,18 +3,17 @@
 Public download point for prebuilt `dotping` binaries. This repo holds **binaries and checksums only**: no source, no tokens, no credentials.
 Source lives in the private `vizidrix/viz` repo under `tools/dotping`.
 
-## Current release: `dotping-68eb8686`
+## Current release: tag `dotping-68eb8686`, contents from main `981647dc`
 
-Built from `vizidrix/viz` main at `68eb8686ad7350539dac6759e21f605df06b628e` (#5899), Zig 0.16.0, `-Doptimize=ReleaseSafe`.
+The tag keeps its old name because the ping text inside dotping links to it. Its assets were replaced on 2026-10-09 at 02:40 PT with the exact binaries deployed from `vizidrix/viz` main at `981647dc7b3a6a32fa0c238bf4ec236dd6f8221b` (#5921, #5925, #5928), built with Zig 0.16.0 and `-Doptimize=ReleaseSafe`.
 
 | Asset | Platform | sha256 |
 |---|---|---|
-| `dotping-linux-x86_64` (**recommended**, same bytes as `-baseline`) | Linux x86_64, any CPU | `a321221a1f57b9383034c362ee8c6796203061c37506e9307887a63ab4ba9a6f` |
-| `dotping-linux-x86_64-baseline` | Linux x86_64, any CPU (`-Dtarget=x86_64-linux-musl -Dcpu=baseline`, static) | `a321221a1f57b9383034c362ee8c6796203061c37506e9307887a63ab4ba9a6f` |
-| `dotping-linux-x86_64-native` | Linux x86_64 **with AVX-512 only** (old default; crashes with SIGILL elsewhere) | `2cada44c2a4696498e1ce0f9f1ca9c83464cec45262d2f63fd727ca5e14bda27` |
-| `dotping-macos-arm64` | macOS Apple Silicon (ad-hoc signed) | `b51643cf51797372a9aa0229e5f57200ea1c7d96b017408e0c227ef2ea910395` |
+| `dotping-linux-x86_64` (**recommended**, same bytes as `-baseline`) | Linux x86_64, any CPU (static, baseline CPU) | `0f0fc1967889eec5fe3136e7b0c282988184d7e188bd6b9278c874e2ba97e262` |
+| `dotping-linux-x86_64-baseline` | Linux x86_64, any CPU | `0f0fc1967889eec5fe3136e7b0c282988184d7e188bd6b9278c874e2ba97e262` |
+| `dotping-macos-arm64` | macOS Apple Silicon (ad-hoc signed) | `9ce0dd4b48fc52b572b9042b39dedebac554a7dbfa391b77346c551c1330b739` |
 
-**2026-10-09:** the original Linux build (`2cada44c…`) was compiled for the builder's native CPU and uses AVX-512, so it dies with SIGILL (illegal instruction) on CPUs without AVX-512. `dotping-linux-x86_64` is now the portable baseline build. If you downloaded before 00:20 PT Oct 9, download it again.
+Each binary also has its own `<asset>.sha256` file. The old AVX-512 `dotping-linux-x86_64-native` asset was removed. If you downloaded before 02:40 PT Oct 9, download again: the new build fixes `status` dying with `registry.json: no apps`.
 
 ## Anonymous download (no GitHub sign-in needed)
 
@@ -40,4 +39,3 @@ chmod +x dotping-macos-arm64
 
 Only run the binary if the checksum line prints `OK`. Use your own sealed handoff (DOTKEY / KEYOK / DOTSEAL) for credentials; nothing secret ships here.
 
-Note: the ping/roll-call text inside this build still says "build dotping ... from main at 20efb129". That pin is stale: build from current `main`.
